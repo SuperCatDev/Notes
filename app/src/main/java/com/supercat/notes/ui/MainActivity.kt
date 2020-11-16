@@ -1,7 +1,8 @@
-package com.supercat.notes
+package com.supercat.notes.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.supercat.notes.R
 
 class MainActivity : AppCompatActivity() {
 
