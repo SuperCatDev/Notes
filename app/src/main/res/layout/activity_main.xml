@@ -4,6 +4,6 @@
     android:id="@+id/fragment_container_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:name="com.supercat.notes.MainFragment"
+    android:name="com.supercat.notes.ui.MainFragment"
     android:tag="my_tag">
 </androidx.fragment.app.FragmentContainerView>
