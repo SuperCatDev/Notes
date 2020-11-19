@@ -1,12 +1,14 @@
 package com.supercat.notes.ui.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.supercat.notes.R
 import com.supercat.notes.data.Note
+import com.supercat.notes.data.mapToColor
 import kotlinx.android.synthetic.main.item_note.view.*
 
 val DIFF_UTIL: DiffUtil.ItemCallback<Note> = object : DiffUtil.ItemCallback<Note>() {
@@ -19,7 +21,8 @@ val DIFF_UTIL: DiffUtil.ItemCallback<Note> = object : DiffUtil.ItemCallback<Note
     }
 }
 
-class NotesAdapter : ListAdapter<Note, NotesAdapter.NoteViewHolder>(DIFF_UTIL) {
+class NotesAdapter(val noteHandler: (Note) -> Unit) :
+    ListAdapter<Note, NotesAdapter.NoteViewHolder>(DIFF_UTIL) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         return NoteViewHolder(parent)
@@ -29,14 +32,22 @@ class NotesAdapter : ListAdapter<Note, NotesAdapter.NoteViewHolder>(DIFF_UTIL) {
         holder.bind(getItem(position))
     }
 
-    class NoteViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
+    inner class NoteViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.item_note, parent, false)
     ) {
+        private lateinit var currentNote: Note
+
+        private val clickListener: View.OnClickListener = View.OnClickListener {
+            noteHandler(currentNote)
+        }
+
         fun bind(item: Note) {
+            currentNote = item
             with(itemView) {
                 title.text = item.title
                 body.text = item.note
-                setBackgroundColor(item.color)
+                setBackgroundColor(item.color.mapToColor(context))
+                setOnClickListener(clickListener)
             }
         }
     }
