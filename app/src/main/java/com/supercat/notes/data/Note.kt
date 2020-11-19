@@ -24,7 +24,6 @@ enum class Color {
     PINK
 }
 
-
 fun Color.mapToColor(context: Context): Int {
 
     val id = when (this) {
