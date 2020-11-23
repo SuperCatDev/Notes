@@ -32,6 +32,8 @@ class NoteFragment : Fragment(R.layout.fragment_note) {
             bodyEt.setText(it.note)
         }
 
+        toolbar.title = viewModel.note?.title ?: getString(R.string.note_creation_title)
+
         titleEt.addTextChangedListener {
             viewModel.updateTitle(it?.toString() ?: "")
         }
