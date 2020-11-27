@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.supercat.notes.R
-import com.supercat.notes.data.Note
+import com.supercat.notes.model.Note
 import com.supercat.notes.presentation.NoteViewModel
 import kotlinx.android.synthetic.main.fragment_note.*
 

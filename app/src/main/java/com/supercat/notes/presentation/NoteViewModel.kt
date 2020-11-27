@@ -1,8 +1,7 @@
 package com.supercat.notes.presentation
 
 import androidx.lifecycle.*
-import com.supercat.notes.data.Note
-import com.supercat.notes.data.NotesRepositoryImpl
+import com.supercat.notes.model.Note
 import com.supercat.notes.data.notesRepository
 
 class NoteViewModel(var note: Note?) : ViewModel() {

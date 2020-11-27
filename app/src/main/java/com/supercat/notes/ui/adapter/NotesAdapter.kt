@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.supercat.notes.R
-import com.supercat.notes.data.Note
-import com.supercat.notes.data.mapToColor
+import com.supercat.notes.model.Note
+import com.supercat.notes.model.mapToColor
 import kotlinx.android.synthetic.main.item_note.view.*
 
 val DIFF_UTIL: DiffUtil.ItemCallback<Note> = object : DiffUtil.ItemCallback<Note>() {

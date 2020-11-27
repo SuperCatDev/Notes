@@ -7,12 +7,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_IDLE
 import com.supercat.notes.R
-import com.supercat.notes.data.Note
+import com.supercat.notes.model.Note
 import com.supercat.notes.presentation.NotesViewModel
 import com.supercat.notes.presentation.ViewState
 import com.supercat.notes.ui.adapter.NotesAdapter
 import kotlinx.android.synthetic.main.main_fragment.*
-import kotlin.math.absoluteValue
 
 class MainFragment : Fragment(R.layout.main_fragment) {
 

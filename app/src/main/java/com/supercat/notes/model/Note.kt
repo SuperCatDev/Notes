@@ -1,9 +1,10 @@
-package com.supercat.notes.data
+package com.supercat.notes.model
 
 import android.content.Context
 import android.os.Parcelable
 import androidx.core.content.ContextCompat
 import com.supercat.notes.R
+import com.supercat.notes.data.noteId
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
