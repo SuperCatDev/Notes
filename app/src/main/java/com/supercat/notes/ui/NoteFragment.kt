@@ -2,6 +2,7 @@ package com.supercat.notes.ui
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
@@ -30,6 +31,14 @@ class NoteFragment : Fragment(R.layout.fragment_note) {
         viewModel.note?.let {
             titleEt.setText(it.title)
             bodyEt.setText(it.note)
+        }
+
+        viewModel.showError().observe(viewLifecycleOwner) {
+            Toast.makeText(requireContext(), "Error while saving note!", Toast.LENGTH_LONG).show()
+        }
+
+        button.setOnClickListener {
+            viewModel.saveNote()
         }
 
         toolbar.title = viewModel.note?.title ?: getString(R.string.note_creation_title)
