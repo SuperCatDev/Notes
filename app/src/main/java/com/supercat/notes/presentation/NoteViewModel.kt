@@ -1,10 +1,10 @@
 package com.supercat.notes.presentation
 
 import androidx.lifecycle.*
+import com.supercat.notes.data.NotesRepository
 import com.supercat.notes.model.Note
-import com.supercat.notes.data.notesRepository
 
-class NoteViewModel(var note: Note?) : ViewModel() {
+class NoteViewModel(private val notesRepository: NotesRepository, var note: Note?) : ViewModel() {
     private val showErrorLiveData = MutableLiveData<Boolean>()
 
     private val lifecycleOwner: LifecycleOwner = LifecycleOwner { viewModelLifecycle }
