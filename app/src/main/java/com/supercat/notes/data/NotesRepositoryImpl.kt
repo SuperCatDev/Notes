@@ -1,7 +1,7 @@
 package com.supercat.notes.data
 
 import androidx.lifecycle.LiveData
-import com.supercat.notes.data.db.FireStoreDatabaseProvider
+import com.supercat.notes.data.db.DatabaseProvider
 import com.supercat.notes.model.Note
 import kotlin.random.Random
 
@@ -9,7 +9,7 @@ private val idRandom = Random(0)
 val noteId: Long
     get() = idRandom.nextLong()
 
-class NotesRepositoryImpl(private val provider: FireStoreDatabaseProvider) : NotesRepository {
+class NotesRepositoryImpl(private val provider: DatabaseProvider) : NotesRepository {
 
     override fun getCurrentUser() = provider.getCurrentUser()
 
@@ -21,5 +21,3 @@ class NotesRepositoryImpl(private val provider: FireStoreDatabaseProvider) : Not
         return provider.addOrReplaceNote(newNote)
     }
 }
-
-val notesRepository: NotesRepository by lazy { NotesRepositoryImpl(FireStoreDatabaseProvider()) }
