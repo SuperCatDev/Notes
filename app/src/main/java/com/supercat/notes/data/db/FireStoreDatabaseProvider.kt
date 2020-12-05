@@ -32,6 +32,16 @@ class FireStoreDatabaseProvider : DatabaseProvider {
 
     override fun getCurrentUser() = currentUser?.run { User(displayName, email) }
 
+    override fun deleteNote(noteId: String): LiveData<Result<Unit>> =
+        MutableLiveData<Result<Unit>>().apply {
+            getUserNotesCollection().document(noteId).delete()
+                .addOnSuccessListener {
+                    value = Result.success(Unit)
+                }.addOnFailureListener {
+                    value = Result.failure(it)
+                }
+        }
+
     override fun addOrReplaceNote(newNote: Note): LiveData<Result<Note>> {
         val result = MutableLiveData<Result<Note>>()
 

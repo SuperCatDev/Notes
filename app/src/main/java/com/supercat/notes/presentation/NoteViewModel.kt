@@ -22,7 +22,8 @@ class NoteViewModel(private val notesRepository: NotesRepository, var note: Note
 
     fun saveNote() {
         note?.let { note ->
-            notesRepository.addOrReplaceNote(note).observe(lifecycleOwner) {
+            val result = notesRepository.addOrReplaceNote(note)
+            result.observe(lifecycleOwner) {
                 it.onFailure {
                     showErrorLiveData.value = true
                 }
