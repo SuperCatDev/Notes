@@ -8,6 +8,7 @@ import com.supercat.notes.model.Note
 import com.supercat.notes.presentation.NoteViewModel
 import com.supercat.notes.presentation.NotesViewModel
 import com.supercat.notes.presentation.SplashViewModel
+import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.bind
