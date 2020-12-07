@@ -1,8 +1,10 @@
 package com.supercat.notes.data
 
-import androidx.lifecycle.LiveData
 import com.supercat.notes.data.db.DatabaseProvider
 import com.supercat.notes.model.Note
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.withContext
 import kotlin.random.Random
 
 private val idRandom = Random(0)
@@ -11,15 +13,19 @@ val noteId: Long
 
 class NotesRepositoryImpl(private val provider: DatabaseProvider) : NotesRepository {
 
-    override fun getCurrentUser() = provider.getCurrentUser()
+    override suspend fun getCurrentUser() = withContext(Dispatchers.IO) {
+        provider.getCurrentUser()
+    }
 
-    override fun observeNotes(): LiveData<List<Note>> {
+    override fun observeNotes(): Flow<List<Note>> {
         return provider.observeNotes()
     }
 
-    override fun addOrReplaceNote(newNote: Note): LiveData<Result<Note>> {
-        return provider.addOrReplaceNote(newNote)
+    override suspend fun addOrReplaceNote(newNote: Note) = withContext(Dispatchers.IO) {
+        provider.addOrReplaceNote(newNote)
     }
 
-    override fun deleteNote(noteId: String): LiveData<Result<Unit>> = provider.deleteNote(noteId)
+    override suspend fun deleteNote(noteId: String) = withContext(Dispatchers.IO) {
+        provider.deleteNote(noteId)
+    }
 }

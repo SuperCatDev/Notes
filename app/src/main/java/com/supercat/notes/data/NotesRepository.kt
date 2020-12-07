@@ -1,12 +1,12 @@
 package com.supercat.notes.data
 
-import androidx.lifecycle.LiveData
 import com.supercat.notes.model.Note
 import com.supercat.notes.model.User
+import kotlinx.coroutines.flow.Flow
 
 interface NotesRepository {
-    fun getCurrentUser(): User?
-    fun observeNotes(): LiveData<List<Note>>
-    fun addOrReplaceNote(newNote: Note): LiveData<Result<Note>>
-    fun deleteNote(noteId: String): LiveData<Result<Unit>>
+    suspend fun getCurrentUser(): User?
+    fun observeNotes(): Flow<List<Note>>
+    suspend fun addOrReplaceNote(newNote: Note)
+    suspend fun deleteNote(noteId: String)
 }

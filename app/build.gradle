@@ -54,6 +54,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:22.0.0'
     implementation 'com.firebaseui:firebase-ui-auth:4.1.0'
 
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2"
+
     // DI
     def koin_ver = '2.1.6'
     implementation "org.koin:koin-core:$koin_ver"
